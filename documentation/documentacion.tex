@@ -1,0 +1,136 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{listings}
+
+\let\<\textless
+\let\>\textgreater
+
+\graphicspath{ {images/} }
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Proyecto \#1}
+\rfoot{P\'agina \thepage}
+
+\begin{document}
+\begin{titlepage}
+  \centering
+  {\scshape\LARGE Instituto Tecnol\'ogico de Costa Rica \par}
+  \vspace{1cm}
+  {\scshape\Large Proyecto \#1\par}
+  \vspace{1.5cm}
+  {\Large\itshape Luis Castillo\par}
+  {\Large\itshape Janis Cervantes\par}
+  {\Large\itshape Sa\'ul Zamora\par}
+  \vfill
+  profesor\par
+  Kevin Moraga \textsc{}
+
+  \vfill
+
+% Bottom of the page
+  {\large \today\par}
+\end{titlepage}
+
+\section{Introducci\'on}
+Se debe realizar una re\-implementaci\'on de algunas de las funciones de la biblioteca pthreads de C del sistema operativo GNU\/Linux.
+
+Como rubro extra, se comprob\'o el funcionamiento de la nueva librer\'ia my\_pthreads.h reemplazando pthreads en la tarea \#2, Net Neutrality.
+
+\section{Ambiente de desarrollo}
+\begin{itemize}
+  \item M\'aquina virtual: VMware Workstation 14 Pro
+  \item Sistema operativo utilizado: Linux Ubuntu 17.10 LTS
+  \item gcc (Ubuntu 7.2.0-8ubuntu3.2) 7.2.0
+\end{itemize}
+
+\section{Estructuras de datos usadas y funciones}
+\subsection{MyPthreads}
+Se realiz\'o una reimplementaci\'on de la bilbioteca de pthreads, con las siguientes funciones:
+
+\begin{itemize}
+  \item my\_thread\_create
+  \item my\_thread\_create\_with\_params
+  \item my\_thread\_end
+  \item my\_thread\_yield
+  \item my\_thread\_join
+  \item my\_thread\_detach
+  \item my\_mutex\_init
+  \item my\_mutex\_destroy
+  \item my\_mutex\_lock
+  \item my\_mutex\_unlock
+\end{itemize}
+
+\section{Instrucciones de ejecuci\'on}
+Para compilar el servidor prethread (y el cliente) de la tarea \#2 y comprobar su funcionamiento con la nueva librer\'ia my\_pthreads.h, se siguen los siguientes pasos:
+\begin{itemize}
+  \item Servidor pre-Thread:
+  \begin{itemize}
+    \item \emph{gcc prethread-Server.c -o prethread-Server}
+  \end{itemize}
+  \item Para el cliente:
+  \begin{itemize}
+    \item \emph{gcc client.c -o client}
+  \end{itemize}
+\end{itemize}
+
+Para la ejecuci\'on del servidor y cliente se sigue el siguiente proceso:
+\begin{itemize}
+  \item Servidor pre-Thread:
+  \begin{itemize}
+    \item \emph{./prethread-Server -n \<num-hilos\> -P \<prioridad\> -r \<path-a-recursos\> -p \<puerto\>}
+  \end{itemize}
+  \item Para el cliente:
+  \begin{itemize}
+    \item \emph{./client -h \<host\> -p \<puerto\>}
+  \end{itemize}
+\end{itemize}
+
+\section{Bit\'acora de trabajo}
+\subsection{Sa\'ul Zamora}
+\begin{itemize}
+  \item 09-04-2018:
+  \begin{itemize}
+    \item 2 horas - Investigar implementacion de threads usando context.
+  \end{itemize}
+  \item 10-04-2018:
+  \begin{itemize}
+    \item 2 horas - Implementaci\'on de librer\'ia de hash\_table.
+  \end{itemize}
+  \item 11-04-2018:
+  \begin{itemize}
+    \item 2 horas - Implementaci\'on de librer\'ia de linked\_list.
+  \end{itemize}
+  \item 12-04-2018:
+  \begin{itemize}
+    \item 2 horas - Implementaci\'on de librer\'ia my\_pthreads.
+  \end{itemize}
+  \item 13-04-2018:
+  \begin{itemize}
+    \item 2 horas - Implementaci\'on de librer\'ia my\_pthreads.
+  \end{itemize}
+  \item 14-04-2018:
+  \begin{itemize}
+    \item 4 horas - Implementaci\'on de librer\'ia my\_pthreads.
+  \end{itemize}
+  \item 14-04-2018:
+  \begin{itemize}
+    \item 2 horas - Modificaci\'on en la tarea de net neutrality para comprobar el funcionamiento de la nueva librer\'ia my\_pthreads.
+  \end{itemize}
+\end{itemize}
+Total de horas trabajadas: 16 horas.
+
+\section{Comentarios finales}
+\begin{itemize}
+  \item 
+\end{itemize}
+
+\section{Conclusiones}
+\begin{itemize}
+  \item 
+\end{itemize}
+
+\begin{thebibliography}{99}
+  \bibitem{context} Anon, (n.d.). Context switching - ucontext\_t and makecontext(). [online] Available at: \texttt{https://stackoverflow.com/questions/21468529/context-switching-ucontext-t-and-makecontext.}
+\end{thebibliography}
+\end{document}
