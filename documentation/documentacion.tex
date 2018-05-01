@@ -63,7 +63,7 @@ Se realiz\'o una reimplementaci\'on de la bilbioteca de pthreads, con las siguie
 
 \section{Scheduler}
 
-Para esta implementación se utiliza el agoritmo de round robin el cual consiste en el cual se asigna un intervalo de tiempo a cada proceso utilizando ITIMER_VIRTUAL este cuenta hacia abajo en contra del tiempo del CPU en modo usuario  que consumió el proceso luego de esto una señal SIGVTALARM es creada esta señal se le pasa a un handler y donde es traída de la cola de ready para su procesamiento. Este funciona cíclicamente con una cola de modo que todos comparten el cpu en algún momento. Lo se se determinó al de este algoritmo es que el cambio de contexto es alto puesto que cambia en cada hilo. Se tiene una cola ready para los hilos a ejecutar y la cola de finish para los hilos cancelados o finalizados. 
+Para esta implementación se utiliza el agoritmo de round robin el cual consiste en el cual se asigna un intervalo de tiempo a cada proceso utilizando ITIMER\_VIRTUAL este cuenta hacia abajo en contra del tiempo del CPU en modo usuario  que consumió el proceso luego de esto una señal SIGVTALARM es creada esta señal se le pasa a un handler y donde es traída de la cola de ready para su procesamiento. Este funciona cíclicamente con una cola de modo que todos comparten el cpu en algún momento. Lo se se determinó al de este algoritmo es que el cambio de contexto es alto puesto que cambia en cada hilo. Se tiene una cola ready para los hilos a ejecutar y la cola de finish para los hilos cancelados o finalizados. 
  
 
 \section{Instrucciones de ejecuci\'on}
