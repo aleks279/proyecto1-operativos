@@ -33,7 +33,7 @@
 \end{titlepage}
 
 \section{Introducci\'on}
-Se debe realizar una re\-implementaci\'on de algunas de las funciones de la biblioteca pthreads de C del sistema operativo GNU\/Linux.
+Se debe realizar una re\-implementaci\'on de algunas de las funciones de la biblioteca pthreads de C del sistema operativo, GNU\/Linux. Este proyecto es elaborado para el curso de sistemas operativos del Tecnológico de Costa Rica. Con el objetivo de aprender y entender el funcionamiento de los procesos y la administración de estos por medio de diferentes algoritmos de scheduling. 
 
 Como rubro extra, se comprob\'o el funcionamiento de la nueva librer\'ia my\_pthreads.h reemplazando pthreads en la tarea \#2, Net Neutrality.
 
@@ -61,6 +61,11 @@ Se realiz\'o una reimplementaci\'on de la bilbioteca de pthreads, con las siguie
   \item my\_mutex\_unlock
 \end{itemize}
 
+\section{Scheduler}
+
+Para esta implementación se utiliza el agoritmo de round robin el cual consiste en el cual se asigna un intervalo de tiempo a cada proceso utilizando ITIMER\_VIRTUAL este cuenta hacia abajo en contra del tiempo del CPU en modo usuario  que consumió el proceso luego de esto una señal SIGVTALARM es creada esta señal se le pasa a un handler y donde es traída de la cola de ready para su procesamiento. Este funciona cíclicamente con una cola de modo que todos comparten el cpu en algún momento. Lo se se determinó al de este algoritmo es que el cambio de contexto es alto puesto que cambia en cada hilo. Se tiene una cola ready para los hilos a ejecutar y la cola de finish para los hilos cancelados o finalizados. 
+ 
+
 \section{Instrucciones de ejecuci\'on}
 Para compilar el servidor prethread (y el cliente) de la tarea \#2 y comprobar su funcionamiento con la nueva librer\'ia my\_pthreads.h, se siguen los siguientes pasos:
 \begin{itemize}
@@ -85,6 +90,11 @@ Para la ejecuci\'on del servidor y cliente se sigue el siguiente proceso:
     \item \emph{./client -h \<host\> -p \<puerto\>}
   \end{itemize}
 \end{itemize}
+
+Para la ejecuci\'on de el scheduler se debe pasar por par\'ametro a la funci\'on de my_thread_create ya que es una funci\'on void los archivos a ejecutar son: rrscheduler.h y rrscheduler.c de la forma: 
+\begin{itemize}
+    \item \emph{gcc -c rrscheduler.c rrscheduler.h}
+  \end{itemize}
 
 \section{Bit\'acora de trabajo}
 \subsection{Sa\'ul Zamora}
@@ -120,6 +130,15 @@ Para la ejecuci\'on del servidor y cliente se sigue el siguiente proceso:
 \end{itemize}
 Total de horas trabajadas: 16 horas.
 
+\subsection{Janis Cervantes}
+\begin{itemize}
+  \item 25-04-2018:
+  \begin{itemize}
+    \item 7 horas - Implementaci\'on e investigaci\'on de scheduler round robin.
+  \end{itemize}
+\end{itemize}
+Total de horas trabajadas: 7 horas.
+
 \section{Comentarios finales}
 \begin{itemize}
   \item 
@@ -132,5 +151,16 @@ Total de horas trabajadas: 16 horas.
 
 \begin{thebibliography}{99}
   \bibitem{context} Anon, (n.d.). Context switching - ucontext\_t and makecontext(). [online] Available at: \texttt{https://stackoverflow.com/questions/21468529/context-switching-ucontext-t-and-makecontext.}
+  
+\bibitem{round robin} Round robin scheduling algorithm in c. [online] Available at: \texttt{https://www.thecrazyprogrammer.com/2015/09/round-robin-scheduling-program-in-c.html}
+
+\bibitem{round robin wiki} Wikipedia. Planificación Round Robin.  [online] Available at: \texttt{https://es.wikipedia.org/wiki/Planificacion_Round-robin} 
+
+\bibitem{opsys} Prabhendu. Operating_system_1.  [online] Available at: \texttt{https://github.com/prabhendu/operating_system_1} 
+
+\bibitem{getitimer} Linux Programme's Manual. getitimer(2).  [online] Available at: \texttt{http://man7.org/linux/man-pages/man2/setitimer.2.html} 
+ 
+ 
+ 
 \end{thebibliography}
 \end{document}
