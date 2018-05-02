@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include<gtk/gtk.h>
-#include "Place.h"
 
 
 
@@ -24,7 +23,8 @@
 typedef enum {
 	CAR,
 	AMBULANCE,
-	SHIP
+	SHIP,
+	CITY
 } TRANSTYPES;
 
 //Definition of the transport object
@@ -37,15 +37,18 @@ typedef struct {
     int width;
     int height;
 
-    Place position;
+    int originX;
+    int originY;
+
+    int destinationX;
+    int destinationy;
 
 } Transport;
 
 //Functions of the transport object
-Transport create (int id, TRANSTYPES type, int width, int height, Place position);
-Transport turnRight();
-Transport turnLeft();
-void move();
+Transport create (int id, TRANSTYPES type, int width, int height, int originX, int originY );
+Transport moveX( Transport transport, int speed );
+Transport moveY( Transport transport, int speed );
 void wait( int time );
 
 
